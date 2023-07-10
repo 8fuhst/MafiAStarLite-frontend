@@ -10,7 +10,7 @@ export default {
     async getData(query) {
       try {
         //fetch
-        const response = await axios.get(this.$hostname + "songs?search=" + query);
+        const response = await axios.get(this.$hostname + "songs?search=" + query + "&page=1");
         this.songs = response.data;
         this.$emit('newSongs', this.songs)
       }
