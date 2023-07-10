@@ -1,16 +1,16 @@
 <template>
   <DefaultNavbar/>
-  <RecordsRack/>
+  <SiteContent/>
 </template>
 
 <script>
-import RecordsRack from "@/components/RecordsRack.vue";
 import DefaultNavbar from "@/components/DefaultNavbar.vue";
+import SiteContent from "@/components/SiteContent.vue";
 
 export default {
   name: 'App',
   components: {
-    RecordsRack,
+    SiteContent,
     DefaultNavbar,
   }
 }
