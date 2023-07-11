@@ -4,15 +4,26 @@ import SearchBox from "@/components/SearchBox.vue";
 </script>
 
 <script>
+  // import axios from "axios";
+
   export default {
     methods: {
       async updateSongs(newSongs) {
+        this.songData = []
         this.songs = newSongs
+        /*let count = 0
+        for(const s of this.songs) {
+          console.log(s)
+          let image = await axios.get(this.$hostname + 'img?id=' + s.pk)
+          this.songData.push([this.songs[count], image])
+          count++;
+        }*/
       }
     },
     data() {
       return {
-        songs: ['']
+        songs: [],
+        songData: [],
       }
     }
   }
@@ -22,7 +33,7 @@ import SearchBox from "@/components/SearchBox.vue";
   <div class="w-full justify-center flex-row flex pt-6 -mb-2">
     <SearchBox @newSongs="updateSongs"/>
   </div>
-  <RecordsRack :displayed-songs="songs"/>
+  <RecordsRack :displayed-songs="this.songs"/>
 </template>
 
 <style scoped>

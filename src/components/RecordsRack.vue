@@ -21,7 +21,7 @@ export default {
 
 <template>
   <div class="songs_container mx-auto px-5 py-2 lg:px-32 lg:pt-12">
-    <div class="songs_content align-middle flex flex-wrap justify-evenly">
+    <div class="songs_content align-middle grid grid-cols-2 lg:grid-cols-3 gap-7 justify-evenly">
         <songBox v-for="song in displayedSongs" :key="song.song_id" :song=song></songBox>
     </div>
   </div>
