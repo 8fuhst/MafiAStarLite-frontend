@@ -2,23 +2,22 @@
 </script>
 
 <script>
-import axios from "axios";
 
 export default {
   name: 'SearchBox',
   methods: {
     async getData(query) {
-      try {
-        //fetch
-        const response = await axios.get(this.$hostname + "songs?search=" + query + "&page=1");
-        this.songs = response.data;
-        this.$emit('newSongs', this.songs)
-      }
-      catch (error) {
-        console.log(error);
+      await new Promise(r => setTimeout(r, 200));
+      if(this.text === query){
+        this.$emit('newSongs', query)
       }
     },
   },
+  data() {
+    return {
+      text: '',
+    }
+  }
 }
 </script>
 
@@ -31,6 +30,7 @@ export default {
     </div>
 
     <input @input="getData($event.target.value)"
+           v-model="this.text"
         class="peer h-full w-full outline-none text-sm text-gray-700 pr-2"
         type="text"
         id="search"

@@ -1,29 +1,34 @@
 <script setup>
 import RecordsRack from "@/components/RecordsRack.vue";
 import SearchBox from "@/components/SearchBox.vue";
+import UpdateButton from "@/components/UpdateButton.vue";
 </script>
 
 <script>
-  // import axios from "axios";
+  import axios from "axios";
 
   export default {
     methods: {
-      async updateSongs(newSongs) {
-        this.songData = []
-        this.songs = newSongs
-        /*let count = 0
-        for(const s of this.songs) {
-          console.log(s)
-          let image = await axios.get(this.$hostname + 'img?id=' + s.pk)
-          this.songData.push([this.songs[count], image])
-          count++;
-        }*/
+      async updateSongs(query) {
+        this.page = 1;
+        const response = await axios.get(this.$hostname + "songs?search=" + query + "&page=" + this.page);
+        this.songs = response.data;
+        this.query = query;
+        this.buttonEnabled = response.data.length === 9;
+      },
+      async addSongs() {
+        this.page++;
+        const response = await axios.get(this.$hostname + "songs?search=" + this.query + "&page=" + this.page);
+        this.songs = this.songs.concat(response.data)
+        this.buttonEnabled = response.data.length === 9;
       }
     },
     data() {
       return {
-        songs: [],
-        songData: [],
+        songs: undefined,
+        query: undefined,
+        page: 1,
+        buttonEnabled: false
       }
     }
   }
@@ -34,6 +39,9 @@ import SearchBox from "@/components/SearchBox.vue";
     <SearchBox @newSongs="updateSongs"/>
   </div>
   <RecordsRack :displayed-songs="this.songs"/>
+  <div v-if="buttonEnabled" class="flex w-full justify-center">
+    <UpdateButton @click="addSongs"/>
+  </div>
 </template>
 
 <style scoped>
