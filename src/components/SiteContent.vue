@@ -30,6 +30,9 @@ import UpdateButton from "@/components/UpdateButton.vue";
         page: 1,
         buttonEnabled: false
       }
+    },
+    created() {
+      this.updateSongs("");
     }
   }
 </script>
