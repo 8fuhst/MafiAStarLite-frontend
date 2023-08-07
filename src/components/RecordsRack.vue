@@ -2,7 +2,7 @@
 </script>
 
 <script>
-import SongBox from "@/components/SongBox.vue";
+import SongBox from "./SongBox.vue";
 //import axios from "axios";
 
 export default {

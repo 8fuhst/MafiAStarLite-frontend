@@ -9,9 +9,9 @@
 </template>
 
 <script>
-import DefaultNavbar from "@/components/DefaultNavbar.vue";
-import SiteContent from "@/components/SiteContent.vue";
-import DefaultFooter from "@/components/Footer.vue";
+import DefaultNavbar from "./components/DefaultNavbar.vue";
+import SiteContent from "./components/SiteContent.vue";
+import DefaultFooter from "./components/Footer.vue";
 
 export default {
   name: 'App',
