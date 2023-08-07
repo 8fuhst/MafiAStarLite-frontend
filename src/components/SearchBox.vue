@@ -30,7 +30,7 @@ export default {
     </div>
 
     <input @input="getData($event.target.value)"
-           v-model="this.text"
+           v-model="text"
         class="peer h-full w-full outline-none text-sm text-gray-700 pr-2"
         type="text"
         id="search"

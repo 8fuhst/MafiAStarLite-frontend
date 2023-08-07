@@ -1,15 +1,22 @@
 <template>
-  <DefaultNavbar/>
-  <SiteContent/>
+  <div class="flex flex-col min-h-screen min-v-screen">
+    <DefaultNavbar/>
+    <div class="grow">
+      <SiteContent/>
+    </div>
+    <DefaultFooter/>
+  </div>
 </template>
 
 <script>
 import DefaultNavbar from "@/components/DefaultNavbar.vue";
 import SiteContent from "@/components/SiteContent.vue";
+import DefaultFooter from "@/components/Footer.vue";
 
 export default {
   name: 'App',
   components: {
+    DefaultFooter,
     SiteContent,
     DefaultNavbar,
   }
