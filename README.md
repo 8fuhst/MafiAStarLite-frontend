@@ -1,23 +1,20 @@
 # mafiastarlite_frontend
 
-## Project setup
+This is the frontend for MafiAStarLite. Written in Vue.js 3 and Tailwindcss.
+
+## Set up the project with
 ```
 npm install
 ```
 
-### Compiles and hot-reloads for development
+### Use for Dev:
 ```
 npm run serve
 ```
 
-### Compiles and minifies for production
+### Build for Production:
 ```
 npm run build
-```
-
-### Lints and fixes files
-```
-npm run lint
 ```
 
 ### Customize configuration
