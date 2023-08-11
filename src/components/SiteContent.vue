@@ -1,7 +1,8 @@
 <script setup>
-import RecordsRack from "./RecordsRack.vue";
-import SearchBox from "./SearchBox.vue";
-import UpdateButton from "./UpdateButton.vue";
+import RecordsRack from "@/components/RecordsRack.vue";
+import SearchBox from "@/components/SearchBox.vue";
+import UpdateButton from "@/components/UpdateButton.vue";
+import NoResultsMessage from "@/components/NoResultsMessage.vue";
 </script>
 
 <script>
@@ -31,9 +32,6 @@ import UpdateButton from "./UpdateButton.vue";
         buttonEnabled: false
       }
     },
-    created() {
-      this.updateSongs("");
-    }
   }
 </script>
 
@@ -41,7 +39,8 @@ import UpdateButton from "./UpdateButton.vue";
   <div class="w-full justify-center flex-row flex pt-6 -mb-2">
     <SearchBox @newSongs="updateSongs"/>
   </div>
-  <RecordsRack :displayed-songs="songs"/>
+  <RecordsRack v-if="songs && songs.length !== 0" :displayed-songs="songs"/>
+  <NoResultsMessage v-else-if="songs && query !== ''"/>
   <div v-if="buttonEnabled" class="flex w-full justify-center">
     <UpdateButton @click="addSongs"/>
   </div>
