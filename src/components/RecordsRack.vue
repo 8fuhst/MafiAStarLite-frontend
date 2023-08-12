@@ -3,7 +3,6 @@
 
 <script>
 import SongBox from "./SongBox.vue";
-//import axios from "axios";
 
 export default {
   name: "RecordsRack",

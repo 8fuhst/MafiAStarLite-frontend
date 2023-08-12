@@ -12,14 +12,16 @@ import NoResultsMessage from "@/components/NoResultsMessage.vue";
     methods: {
       async updateSongs(query) {
         this.page = 1;
-        const response = await axios.get(this.$hostname + "songs?search=" + query + "&page=" + this.page);
+        const url = this.$hostname + "songs?search=" + encodeURIComponent(query) + "&page=" + this.page
+        const response = await axios.get(url);
         this.songs = response.data;
         this.query = query;
         this.buttonEnabled = response.data.length === 9;
       },
       async addSongs() {
         this.page++;
-        const response = await axios.get(this.$hostname + "songs?search=" + this.query + "&page=" + this.page);
+        const url = this.$hostname + "songs?search=" + encodeURIComponent(this.query) + "&page=" + this.page
+        const response = await axios.get(url);
         this.songs = this.songs.concat(response.data)
         this.buttonEnabled = response.data.length === 9;
       }
