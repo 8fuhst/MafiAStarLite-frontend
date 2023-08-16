@@ -16,14 +16,14 @@ import NoResultsMessage from "@/components/NoResultsMessage.vue";
         const response = await axios.get(url);
         this.songs = response.data;
         this.query = query;
-        this.buttonEnabled = response.data.length === 9;
+        this.buttonEnabled = response.data.length === 12;
       },
       async addSongs() {
         this.page++;
         const url = this.$hostname + "songs?search=" + encodeURIComponent(this.query) + "&page=" + this.page
         const response = await axios.get(url);
         this.songs = this.songs.concat(response.data)
-        this.buttonEnabled = response.data.length === 9;
+        this.buttonEnabled = response.data.length === 12;
       }
     },
     data() {
